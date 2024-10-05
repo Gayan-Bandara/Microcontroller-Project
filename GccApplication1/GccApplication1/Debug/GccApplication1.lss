@@ -1,0 +1,767 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000010  00800100  000004c8  0000055c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000004c8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000004  00800110  00800110  0000056c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000056c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000059c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000050  00000000  00000000  000005d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000967  00000000  00000000  00000628  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000076c  00000000  00000000  00000f8f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000005a4  00000000  00000000  000016fb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000009c  00000000  00000000  00001ca0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004bc  00000000  00000000  00001d3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000001da  00000000  00000000  000021f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000058  00000000  00000000  000023d2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e8 ec       	ldi	r30, 0xC8	; 200
+  7c:	f4 e0       	ldi	r31, 0x04	; 4
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 31       	cpi	r26, 0x10	; 16
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a0 e1       	ldi	r26, 0x10	; 16
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a4 31       	cpi	r26, 0x14	; 20
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 97 01 	call	0x32e	; 0x32e <main>
+  9e:	0c 94 62 02 	jmp	0x4c4	; 0x4c4 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <shift_out>:
+	// Output segment data
+	shift_out(SEGMENT_MAP[number]);
+	
+	// Enable the selected digit
+	PORTC &= ~(1 << (DIGIT_1 + digit));
+}
+  a6:	27 e0       	ldi	r18, 0x07	; 7
+  a8:	30 e0       	ldi	r19, 0x00	; 0
+  aa:	19 c0       	rjmp	.+50     	; 0xde <shift_out+0x38>
+  ac:	48 2f       	mov	r20, r24
+  ae:	50 e0       	ldi	r21, 0x00	; 0
+  b0:	02 2e       	mov	r0, r18
+  b2:	02 c0       	rjmp	.+4      	; 0xb8 <shift_out+0x12>
+  b4:	55 95       	asr	r21
+  b6:	47 95       	ror	r20
+  b8:	0a 94       	dec	r0
+  ba:	e2 f7       	brpl	.-8      	; 0xb4 <shift_out+0xe>
+  bc:	40 ff       	sbrs	r20, 0
+  be:	04 c0       	rjmp	.+8      	; 0xc8 <shift_out+0x22>
+  c0:	95 b1       	in	r25, 0x05	; 5
+  c2:	91 60       	ori	r25, 0x01	; 1
+  c4:	95 b9       	out	0x05, r25	; 5
+  c6:	03 c0       	rjmp	.+6      	; 0xce <shift_out+0x28>
+  c8:	95 b1       	in	r25, 0x05	; 5
+  ca:	9e 7f       	andi	r25, 0xFE	; 254
+  cc:	95 b9       	out	0x05, r25	; 5
+  ce:	95 b1       	in	r25, 0x05	; 5
+  d0:	98 60       	ori	r25, 0x08	; 8
+  d2:	95 b9       	out	0x05, r25	; 5
+  d4:	95 b1       	in	r25, 0x05	; 5
+  d6:	97 7f       	andi	r25, 0xF7	; 247
+  d8:	95 b9       	out	0x05, r25	; 5
+  da:	21 50       	subi	r18, 0x01	; 1
+  dc:	31 09       	sbc	r19, r1
+  de:	33 23       	and	r19, r19
+  e0:	2c f7       	brge	.-54     	; 0xac <shift_out+0x6>
+  e2:	85 b1       	in	r24, 0x05	; 5
+  e4:	80 61       	ori	r24, 0x10	; 16
+  e6:	85 b9       	out	0x05, r24	; 5
+  e8:	85 b1       	in	r24, 0x05	; 5
+  ea:	8f 7e       	andi	r24, 0xEF	; 239
+  ec:	85 b9       	out	0x05, r24	; 5
+  ee:	08 95       	ret
+
+000000f0 <check_buttons>:
+
+void check_buttons() {
+	static uint8_t last_state = 0;
+	static uint8_t debounce_count = 0;
+	
+	uint8_t current_state = PIND & ((1 << BTN_INC) | (1 << BTN_DEC) | (1 << BTN_TOGGLE) | (1 << BTN_MODE) | (1 << BTN_ACK));
+  f0:	99 b1       	in	r25, 0x09	; 9
+  f2:	89 2f       	mov	r24, r25
+  f4:	8f 71       	andi	r24, 0x1F	; 31
+	
+	if (current_state != last_state) {
+  f6:	20 91 11 01 	lds	r18, 0x0111	; 0x800111 <last_state.1915>
+  fa:	82 17       	cp	r24, r18
+  fc:	21 f0       	breq	.+8      	; 0x106 <check_buttons+0x16>
+		debounce_count = DEBOUNCE_TIME;
+  fe:	91 e0       	ldi	r25, 0x01	; 1
+ 100:	90 93 10 01 	sts	0x0110, r25	; 0x800110 <__data_end>
+ 104:	5a c0       	rjmp	.+180    	; 0x1ba <check_buttons+0xca>
+		} else if (debounce_count > 0) {
+ 106:	20 91 10 01 	lds	r18, 0x0110	; 0x800110 <__data_end>
+ 10a:	22 23       	and	r18, r18
+ 10c:	09 f4       	brne	.+2      	; 0x110 <check_buttons+0x20>
+ 10e:	55 c0       	rjmp	.+170    	; 0x1ba <check_buttons+0xca>
+		debounce_count--;
+ 110:	21 50       	subi	r18, 0x01	; 1
+ 112:	20 93 10 01 	sts	0x0110, r18	; 0x800110 <__data_end>
+		if (debounce_count == 0) {
+ 116:	21 11       	cpse	r18, r1
+ 118:	50 c0       	rjmp	.+160    	; 0x1ba <check_buttons+0xca>
+			if ((current_state & (1 << BTN_INC)) == 0) {
+ 11a:	92 fd       	sbrc	r25, 2
+ 11c:	17 c0       	rjmp	.+46     	; 0x14c <check_buttons+0x5c>
+				temperature++;
+ 11e:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <temperature>
+ 122:	30 91 02 01 	lds	r19, 0x0102	; 0x800102 <temperature+0x1>
+ 126:	2f 5f       	subi	r18, 0xFF	; 255
+ 128:	3f 4f       	sbci	r19, 0xFF	; 255
+ 12a:	30 93 02 01 	sts	0x0102, r19	; 0x800102 <temperature+0x1>
+ 12e:	20 93 01 01 	sts	0x0101, r18	; 0x800101 <temperature>
+				if (temperature > 100) temperature = 100;
+ 132:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <temperature>
+ 136:	30 91 02 01 	lds	r19, 0x0102	; 0x800102 <temperature+0x1>
+ 13a:	25 36       	cpi	r18, 0x65	; 101
+ 13c:	31 05       	cpc	r19, r1
+ 13e:	34 f0       	brlt	.+12     	; 0x14c <check_buttons+0x5c>
+ 140:	24 e6       	ldi	r18, 0x64	; 100
+ 142:	30 e0       	ldi	r19, 0x00	; 0
+ 144:	30 93 02 01 	sts	0x0102, r19	; 0x800102 <temperature+0x1>
+ 148:	20 93 01 01 	sts	0x0101, r18	; 0x800101 <temperature>
+			}
+			if ((current_state & (1 << BTN_DEC)) == 0) {
+ 14c:	93 fd       	sbrc	r25, 3
+ 14e:	14 c0       	rjmp	.+40     	; 0x178 <check_buttons+0x88>
+				temperature--;
+ 150:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <temperature>
+ 154:	30 91 02 01 	lds	r19, 0x0102	; 0x800102 <temperature+0x1>
+ 158:	21 50       	subi	r18, 0x01	; 1
+ 15a:	31 09       	sbc	r19, r1
+ 15c:	30 93 02 01 	sts	0x0102, r19	; 0x800102 <temperature+0x1>
+ 160:	20 93 01 01 	sts	0x0101, r18	; 0x800101 <temperature>
+				if (temperature < 0) temperature = 0;
+ 164:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <temperature>
+ 168:	30 91 02 01 	lds	r19, 0x0102	; 0x800102 <temperature+0x1>
+ 16c:	33 23       	and	r19, r19
+ 16e:	24 f4       	brge	.+8      	; 0x178 <check_buttons+0x88>
+ 170:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <temperature+0x1>
+ 174:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <temperature>
+			}
+			if ((current_state & (1 << BTN_TOGGLE)) == 0) {
+ 178:	94 fd       	sbrc	r25, 4
+ 17a:	07 c0       	rjmp	.+14     	; 0x18a <check_buttons+0x9a>
+				is_celsius = !is_celsius;
+ 17c:	30 91 00 01 	lds	r19, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 180:	21 e0       	ldi	r18, 0x01	; 1
+ 182:	31 11       	cpse	r19, r1
+ 184:	20 e0       	ldi	r18, 0x00	; 0
+ 186:	20 93 00 01 	sts	0x0100, r18	; 0x800100 <__DATA_REGION_ORIGIN__>
+			}
+			if ((current_state & (1 << BTN_ACK)) == 0 && temperature > 40) {
+ 18a:	91 fd       	sbrc	r25, 1
+ 18c:	0d c0       	rjmp	.+26     	; 0x1a8 <check_buttons+0xb8>
+ 18e:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <temperature>
+ 192:	30 91 02 01 	lds	r19, 0x0102	; 0x800102 <temperature+0x1>
+ 196:	29 32       	cpi	r18, 0x29	; 41
+ 198:	31 05       	cpc	r19, r1
+ 19a:	34 f0       	brlt	.+12     	; 0x1a8 <check_buttons+0xb8>
+				led_off = 1;  // Set flag to turn off LED
+ 19c:	21 e0       	ldi	r18, 0x01	; 1
+ 19e:	20 93 13 01 	sts	0x0113, r18	; 0x800113 <led_off>
+				PORTB &= ~(1 << ALARM_LED);  // Turn off LED immediately
+ 1a2:	25 b1       	in	r18, 0x05	; 5
+ 1a4:	2f 7d       	andi	r18, 0xDF	; 223
+ 1a6:	25 b9       	out	0x05, r18	; 5
+			}
+			if ((current_state & (1 << BTN_MODE)) == 0) {
+ 1a8:	90 fd       	sbrc	r25, 0
+ 1aa:	07 c0       	rjmp	.+14     	; 0x1ba <check_buttons+0xca>
+				display_mode = !display_mode;  // Toggle between Seven-segment and LED_Indicator
+ 1ac:	20 91 12 01 	lds	r18, 0x0112	; 0x800112 <display_mode>
+ 1b0:	91 e0       	ldi	r25, 0x01	; 1
+ 1b2:	21 11       	cpse	r18, r1
+ 1b4:	90 e0       	ldi	r25, 0x00	; 0
+ 1b6:	90 93 12 01 	sts	0x0112, r25	; 0x800112 <display_mode>
+			}
+		}
+	}
+	
+	last_state = current_state;
+ 1ba:	80 93 11 01 	sts	0x0111, r24	; 0x800111 <last_state.1915>
+ 1be:	08 95       	ret
+
+000001c0 <celsius_to_fahrenheit>:
+}
+
+int celsius_to_fahrenheit(int celsius) {
+	return (celsius * 9 / 5) + 32;
+ 1c0:	9c 01       	movw	r18, r24
+ 1c2:	22 0f       	add	r18, r18
+ 1c4:	33 1f       	adc	r19, r19
+ 1c6:	22 0f       	add	r18, r18
+ 1c8:	33 1f       	adc	r19, r19
+ 1ca:	22 0f       	add	r18, r18
+ 1cc:	33 1f       	adc	r19, r19
+ 1ce:	82 0f       	add	r24, r18
+ 1d0:	93 1f       	adc	r25, r19
+ 1d2:	65 e0       	ldi	r22, 0x05	; 5
+ 1d4:	70 e0       	ldi	r23, 0x00	; 0
+ 1d6:	0e 94 3a 02 	call	0x474	; 0x474 <__divmodhi4>
+}
+ 1da:	cb 01       	movw	r24, r22
+ 1dc:	80 96       	adiw	r24, 0x20	; 32
+ 1de:	08 95       	ret
+
+000001e0 <turn_off_leds>:
+
+void turn_off_leds(void) {
+	DDRD &= ~((1 << DDD5) | (1 << DDD6));
+ 1e0:	8a b1       	in	r24, 0x0a	; 10
+ 1e2:	8f 79       	andi	r24, 0x9F	; 159
+ 1e4:	8a b9       	out	0x0a, r24	; 10
+	DDRB &= ~((1 << DDB2) | (1 << DDB1));
+ 1e6:	84 b1       	in	r24, 0x04	; 4
+ 1e8:	89 7f       	andi	r24, 0xF9	; 249
+ 1ea:	84 b9       	out	0x04, r24	; 4
+	PORTD &= ~((1 << PD5) | (1 << PD6));
+ 1ec:	8b b1       	in	r24, 0x0b	; 11
+ 1ee:	8f 79       	andi	r24, 0x9F	; 159
+ 1f0:	8b b9       	out	0x0b, r24	; 11
+	PORTB &= ~((1 << PB2) | (1 << PB1));
+ 1f2:	85 b1       	in	r24, 0x05	; 5
+ 1f4:	89 7f       	andi	r24, 0xF9	; 249
+ 1f6:	85 b9       	out	0x05, r24	; 5
+ 1f8:	08 95       	ret
+
+000001fa <LED_Indicator>:
+}
+
+void LED_Indicator()
+{
+	turn_off_leds();
+ 1fa:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <turn_off_leds>
+	if (temperature < 15) // check variable A below 15
+ 1fe:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 202:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 206:	0f 97       	sbiw	r24, 0x0f	; 15
+ 208:	8c f4       	brge	.+34     	; 0x22c <LED_Indicator+0x32>
+	{
+		TCCR0A = (1 << WGM00) | (1 << WGM01) | (1 << COM0B1); // set PWM mode and pin
+ 20a:	83 e2       	ldi	r24, 0x23	; 35
+ 20c:	84 bd       	out	0x24, r24	; 36
+		TCCR0B = (1 << CS01); // set pre scaler
+ 20e:	82 e0       	ldi	r24, 0x02	; 2
+ 210:	85 bd       	out	0x25, r24	; 37
+		DDRD |= (1 << DDD5);  // set PD5 pin output
+ 212:	8a b1       	in	r24, 0x0a	; 10
+ 214:	80 62       	ori	r24, 0x20	; 32
+ 216:	8a b9       	out	0x0a, r24	; 10
+		
+		OCR0B = (temperature * 17); // set OCR value (0-255)
+ 218:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 21c:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 220:	91 e1       	ldi	r25, 0x11	; 17
+ 222:	89 9f       	mul	r24, r25
+ 224:	80 2d       	mov	r24, r0
+ 226:	11 24       	eor	r1, r1
+ 228:	88 bd       	out	0x28, r24	; 40
+ 22a:	08 95       	ret
+	}
+	else if (temperature >= 15 && temperature <= 25) // Check variable A value between 15 and 25
+ 22c:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 230:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 234:	0f 97       	sbiw	r24, 0x0f	; 15
+ 236:	d4 f0       	brlt	.+52     	; 0x26c <LED_Indicator+0x72>
+ 238:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 23c:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 240:	4a 97       	sbiw	r24, 0x1a	; 26
+ 242:	a4 f4       	brge	.+40     	; 0x26c <LED_Indicator+0x72>
+	{
+		TCCR0A = (1 << WGM00) | (1 << WGM01) | (1 << COM0A1) | (1 << COM0B1); // set PWM mode and pin
+ 244:	83 ea       	ldi	r24, 0xA3	; 163
+ 246:	84 bd       	out	0x24, r24	; 36
+		TCCR0B = (1 << CS01); // set pre scaler
+ 248:	82 e0       	ldi	r24, 0x02	; 2
+ 24a:	85 bd       	out	0x25, r24	; 37
+		DDRD |= (1 << DDD5) | (1 << DDD6); // set PD5 and PD6 pin output
+ 24c:	8a b1       	in	r24, 0x0a	; 10
+ 24e:	80 66       	ori	r24, 0x60	; 96
+ 250:	8a b9       	out	0x0a, r24	; 10
+		
+		OCR0B = 255; // Max brightness for first LED
+ 252:	8f ef       	ldi	r24, 0xFF	; 255
+ 254:	88 bd       	out	0x28, r24	; 40
+		OCR0A = ((temperature - 15) * 25); // set OCR value (0-255) for second LED
+ 256:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 25a:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 25e:	0f 97       	sbiw	r24, 0x0f	; 15
+ 260:	99 e1       	ldi	r25, 0x19	; 25
+ 262:	89 9f       	mul	r24, r25
+ 264:	80 2d       	mov	r24, r0
+ 266:	11 24       	eor	r1, r1
+ 268:	87 bd       	out	0x27, r24	; 39
+ 26a:	08 95       	ret
+	}
+	else if (temperature > 25 && temperature < 35) // check variable A between 26 and 35
+ 26c:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 270:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 274:	4a 97       	sbiw	r24, 0x1a	; 26
+ 276:	4c f1       	brlt	.+82     	; 0x2ca <LED_Indicator+0xd0>
+ 278:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 27c:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 280:	83 97       	sbiw	r24, 0x23	; 35
+ 282:	1c f5       	brge	.+70     	; 0x2ca <LED_Indicator+0xd0>
+	{
+		TCCR0A = (1 << WGM00) | (1 << WGM01) | (1 << COM0A1) | (1 << COM0B1); // set PWM mode and pin
+ 284:	83 ea       	ldi	r24, 0xA3	; 163
+ 286:	84 bd       	out	0x24, r24	; 36
+		TCCR0B = (1 << CS01);  // set pre scaler
+ 288:	82 e0       	ldi	r24, 0x02	; 2
+ 28a:	85 bd       	out	0x25, r24	; 37
+		DDRD |= (1 << DDD5) | (1 << DDD6); // set PD5 and PD6 pin output
+ 28c:	8a b1       	in	r24, 0x0a	; 10
+ 28e:	80 66       	ori	r24, 0x60	; 96
+ 290:	8a b9       	out	0x0a, r24	; 10
+		
+		TCCR1A = (1 << WGM10) | (1 << COM1A1);  // set PWM mode and pin
+ 292:	81 e8       	ldi	r24, 0x81	; 129
+ 294:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <__TEXT_REGION_LENGTH__+0x7f8080>
+		TCCR1B = (1 << WGM12) | (1 << CS11); // set pre scaler
+ 298:	8a e0       	ldi	r24, 0x0A	; 10
+ 29a:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
+		DDRB |= (1 << PB1); // set PB1 pin output
+ 29e:	84 b1       	in	r24, 0x04	; 4
+ 2a0:	82 60       	ori	r24, 0x02	; 2
+ 2a2:	84 b9       	out	0x04, r24	; 4
+		
+		OCR0B = 255; // Max brightness for first LED
+ 2a4:	8f ef       	ldi	r24, 0xFF	; 255
+ 2a6:	88 bd       	out	0x28, r24	; 40
+		OCR0A = 255; // Max brightness for second LED
+ 2a8:	87 bd       	out	0x27, r24	; 39
+		OCR1A = ((temperature - 25) * 25); // set OCR value (0-255) for third LED
+ 2aa:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 2ae:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 2b2:	49 97       	sbiw	r24, 0x19	; 25
+ 2b4:	49 e1       	ldi	r20, 0x19	; 25
+ 2b6:	48 9f       	mul	r20, r24
+ 2b8:	90 01       	movw	r18, r0
+ 2ba:	49 9f       	mul	r20, r25
+ 2bc:	30 0d       	add	r19, r0
+ 2be:	11 24       	eor	r1, r1
+ 2c0:	30 93 89 00 	sts	0x0089, r19	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 2c4:	20 93 88 00 	sts	0x0088, r18	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+ 2c8:	08 95       	ret
+	}
+	else if (temperature >= 35) // check variable A above 35
+ 2ca:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 2ce:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 2d2:	83 97       	sbiw	r24, 0x23	; 35
+ 2d4:	5c f1       	brlt	.+86     	; 0x32c <LED_Indicator+0x132>
+	{
+		TCCR0A = (1 << WGM00) | (1 << WGM01) | (1 << COM0A1) | (1 << COM0B1);  // set PWM mode and pin
+ 2d6:	83 ea       	ldi	r24, 0xA3	; 163
+ 2d8:	84 bd       	out	0x24, r24	; 36
+		TCCR0B = (1 << CS01);  // set pre scaler
+ 2da:	82 e0       	ldi	r24, 0x02	; 2
+ 2dc:	85 bd       	out	0x25, r24	; 37
+		DDRD |= (1 << DDD5) | (1 << DDD6); // set PD5 and PD6 pin output
+ 2de:	8a b1       	in	r24, 0x0a	; 10
+ 2e0:	80 66       	ori	r24, 0x60	; 96
+ 2e2:	8a b9       	out	0x0a, r24	; 10
+		
+		TCCR1A = (1 << COM1B1) | (1 << WGM10) | (1 << COM1A1); // set PWM mode and pin
+ 2e4:	81 ea       	ldi	r24, 0xA1	; 161
+ 2e6:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <__TEXT_REGION_LENGTH__+0x7f8080>
+		TCCR1B = (1 << WGM12) | (1 << CS11); // set pre scaler
+ 2ea:	8a e0       	ldi	r24, 0x0A	; 10
+ 2ec:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
+		DDRB |= (1 << PB1) | (1 << PB2); // set PB1 and PB2 pin output
+ 2f0:	84 b1       	in	r24, 0x04	; 4
+ 2f2:	86 60       	ori	r24, 0x06	; 6
+ 2f4:	84 b9       	out	0x04, r24	; 4
+		
+		OCR0B = 255; // Max brightness for first LED
+ 2f6:	8f ef       	ldi	r24, 0xFF	; 255
+ 2f8:	88 bd       	out	0x28, r24	; 40
+		OCR0A = 255; // Max brightness for second LED
+ 2fa:	87 bd       	out	0x27, r24	; 39
+		OCR1A = 255; // Max brightness for third LED
+ 2fc:	8f ef       	ldi	r24, 0xFF	; 255
+ 2fe:	90 e0       	ldi	r25, 0x00	; 0
+ 300:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 304:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+		OCR1B = ((temperature - 35) * 12); // set OCR value (0-255) for fourth LED
+ 308:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 30c:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 310:	83 97       	sbiw	r24, 0x23	; 35
+ 312:	9c 01       	movw	r18, r24
+ 314:	22 0f       	add	r18, r18
+ 316:	33 1f       	adc	r19, r19
+ 318:	82 0f       	add	r24, r18
+ 31a:	93 1f       	adc	r25, r19
+ 31c:	88 0f       	add	r24, r24
+ 31e:	99 1f       	adc	r25, r25
+ 320:	88 0f       	add	r24, r24
+ 322:	99 1f       	adc	r25, r25
+ 324:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <__TEXT_REGION_LENGTH__+0x7f808b>
+ 328:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__TEXT_REGION_LENGTH__+0x7f808a>
+ 32c:	08 95       	ret
+
+0000032e <main>:
+	}
+}
+
+int main(void) {
+ 32e:	cf 93       	push	r28
+ 330:	df 93       	push	r29
+ 332:	00 d0       	rcall	.+0      	; 0x334 <main+0x6>
+ 334:	00 d0       	rcall	.+0      	; 0x336 <main+0x8>
+ 336:	cd b7       	in	r28, 0x3d	; 61
+ 338:	de b7       	in	r29, 0x3e	; 62
+	// Set up shift register pins as outputs
+	DDRB |= (1 << SHIFT_DATA) | (1 << SHIFT_CLK) | (1 << SHIFT_LATCH);
+ 33a:	84 b1       	in	r24, 0x04	; 4
+ 33c:	89 61       	ori	r24, 0x19	; 25
+ 33e:	84 b9       	out	0x04, r24	; 4
+	
+	// Set up digit select pins as outputs
+	DDRC |= (1 << DIGIT_1) | (1 << DIGIT_2) | (1 << DIGIT_3) | (1 << DIGIT_4);
+ 340:	87 b1       	in	r24, 0x07	; 7
+ 342:	8f 60       	ori	r24, 0x0F	; 15
+ 344:	87 b9       	out	0x07, r24	; 7
+	
+	// Set up button pins as inputs with pull-ups
+	DDRD &= ~((1 << BTN_INC) | (1 << BTN_DEC) | (1 << BTN_TOGGLE) | (1 << BTN_ACK) | (1 << BTN_MODE));
+ 346:	8a b1       	in	r24, 0x0a	; 10
+ 348:	80 7e       	andi	r24, 0xE0	; 224
+ 34a:	8a b9       	out	0x0a, r24	; 10
+	PORTD |= (1 << BTN_INC) | (1 << BTN_DEC) | (1 << BTN_TOGGLE) | (1 << BTN_ACK) | (1 << BTN_MODE);
+ 34c:	8b b1       	in	r24, 0x0b	; 11
+ 34e:	8f 61       	ori	r24, 0x1F	; 31
+ 350:	8b b9       	out	0x0b, r24	; 11
+	
+	DDRB |= (1 << ALARM_LED);
+ 352:	84 b1       	in	r24, 0x04	; 4
+ 354:	80 62       	ori	r24, 0x20	; 32
+ 356:	84 b9       	out	0x04, r24	; 4
+	DDRD |= (1 << SHIFT_EN);
+ 358:	8a b1       	in	r24, 0x0a	; 10
+ 35a:	80 68       	ori	r24, 0x80	; 128
+ 35c:	8a b9       	out	0x0a, r24	; 10
+	PORTB &= ~(1 << ALARM_LED);
+ 35e:	85 b1       	in	r24, 0x05	; 5
+ 360:	8f 7d       	andi	r24, 0xDF	; 223
+ 362:	85 b9       	out	0x05, r24	; 5
+	
+	int display_value;
+	uint8_t digits[4];
+	
+	while (1) {
+		check_buttons();
+ 364:	0e 94 78 00 	call	0xf0	; 0xf0 <check_buttons>
+		
+		if (is_celsius) {
+ 368:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 36c:	88 23       	and	r24, r24
+ 36e:	39 f0       	breq	.+14     	; 0x37e <main+0x50>
+			display_value = temperature;
+ 370:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <temperature>
+ 374:	30 91 02 01 	lds	r19, 0x0102	; 0x800102 <temperature+0x1>
+			digits[3] = 10;  // 'C' for Celsius
+ 378:	8a e0       	ldi	r24, 0x0A	; 10
+ 37a:	8c 83       	std	Y+4, r24	; 0x04
+ 37c:	09 c0       	rjmp	.+18     	; 0x390 <main+0x62>
+			} else {
+			display_value = celsius_to_fahrenheit(temperature);
+ 37e:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 382:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 386:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <celsius_to_fahrenheit>
+ 38a:	9c 01       	movw	r18, r24
+			digits[3] = 11;  // 'F' for Fahrenheit
+ 38c:	8b e0       	ldi	r24, 0x0B	; 11
+ 38e:	8c 83       	std	Y+4, r24	; 0x04
+		}
+		
+		// Prepare digits
+		if (display_value < 0) {
+ 390:	33 23       	and	r19, r19
+ 392:	2c f4       	brge	.+10     	; 0x39e <main+0x70>
+			temperature = 0;
+ 394:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <temperature+0x1>
+ 398:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <temperature>
+ 39c:	0b c0       	rjmp	.+22     	; 0x3b4 <main+0x86>
+			} else {
+			digits[0] = display_value / 100 % 10;
+ 39e:	c9 01       	movw	r24, r18
+ 3a0:	64 e6       	ldi	r22, 0x64	; 100
+ 3a2:	70 e0       	ldi	r23, 0x00	; 0
+ 3a4:	0e 94 3a 02 	call	0x474	; 0x474 <__divmodhi4>
+ 3a8:	cb 01       	movw	r24, r22
+ 3aa:	6a e0       	ldi	r22, 0x0A	; 10
+ 3ac:	70 e0       	ldi	r23, 0x00	; 0
+ 3ae:	0e 94 3a 02 	call	0x474	; 0x474 <__divmodhi4>
+ 3b2:	89 83       	std	Y+1, r24	; 0x01
+		}
+		digits[1] = (display_value / 10) % 10;
+ 3b4:	ea e0       	ldi	r30, 0x0A	; 10
+ 3b6:	f0 e0       	ldi	r31, 0x00	; 0
+ 3b8:	c9 01       	movw	r24, r18
+ 3ba:	bf 01       	movw	r22, r30
+ 3bc:	0e 94 3a 02 	call	0x474	; 0x474 <__divmodhi4>
+ 3c0:	28 2f       	mov	r18, r24
+ 3c2:	cb 01       	movw	r24, r22
+ 3c4:	bf 01       	movw	r22, r30
+ 3c6:	0e 94 3a 02 	call	0x474	; 0x474 <__divmodhi4>
+ 3ca:	8a 83       	std	Y+2, r24	; 0x02
+		digits[2] = display_value % 10;
+ 3cc:	2b 83       	std	Y+3, r18	; 0x03
+		
+		if (display_mode == 0) {
+ 3ce:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <display_mode>
+ 3d2:	81 11       	cpse	r24, r1
+ 3d4:	38 c0       	rjmp	.+112    	; 0x446 <__EEPROM_REGION_LENGTH__+0x46>
+			turn_off_leds();
+ 3d6:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <turn_off_leds>
+			PORTD &= ~(1 << SHIFT_EN);
+ 3da:	8b b1       	in	r24, 0x0b	; 11
+ 3dc:	8f 77       	andi	r24, 0x7F	; 127
+ 3de:	8b b9       	out	0x0b, r24	; 11
+			// Seven-segment display mode
+			// Display each digit multiple times for smoother appearance
+			for (int repeat = 0; repeat < 20; repeat++) {
+ 3e0:	00 e0       	ldi	r16, 0x00	; 0
+ 3e2:	10 e0       	ldi	r17, 0x00	; 0
+ 3e4:	2c c0       	rjmp	.+88     	; 0x43e <__EEPROM_REGION_LENGTH__+0x3e>
+				for (int i = 0; i < 4; i++) {
+					// Turn off all digits
+					PORTC |= (1 << DIGIT_1) | (1 << DIGIT_2) | (1 << DIGIT_3) | (1 << DIGIT_4);
+ 3e6:	88 b1       	in	r24, 0x08	; 8
+ 3e8:	8f 60       	ori	r24, 0x0F	; 15
+ 3ea:	88 b9       	out	0x08, r24	; 8
+					
+					// Output segment data
+					shift_out(SEGMENT_MAP[digits[i]]);
+ 3ec:	e1 e0       	ldi	r30, 0x01	; 1
+ 3ee:	f0 e0       	ldi	r31, 0x00	; 0
+ 3f0:	ec 0f       	add	r30, r28
+ 3f2:	fd 1f       	adc	r31, r29
+ 3f4:	ee 0d       	add	r30, r14
+ 3f6:	ff 1d       	adc	r31, r15
+ 3f8:	e0 81       	ld	r30, Z
+ 3fa:	f0 e0       	ldi	r31, 0x00	; 0
+ 3fc:	ed 5f       	subi	r30, 0xFD	; 253
+ 3fe:	fe 4f       	sbci	r31, 0xFE	; 254
+ 400:	80 81       	ld	r24, Z
+ 402:	0e 94 53 00 	call	0xa6	; 0xa6 <shift_out>
+					
+					// Enable the current digit
+					PORTC &= ~(1 << (DIGIT_1 + i));
+ 406:	28 b1       	in	r18, 0x08	; 8
+ 408:	81 e0       	ldi	r24, 0x01	; 1
+ 40a:	90 e0       	ldi	r25, 0x00	; 0
+ 40c:	0e 2c       	mov	r0, r14
+ 40e:	02 c0       	rjmp	.+4      	; 0x414 <__EEPROM_REGION_LENGTH__+0x14>
+ 410:	88 0f       	add	r24, r24
+ 412:	99 1f       	adc	r25, r25
+ 414:	0a 94       	dec	r0
+ 416:	e2 f7       	brpl	.-8      	; 0x410 <__EEPROM_REGION_LENGTH__+0x10>
+ 418:	80 95       	com	r24
+ 41a:	82 23       	and	r24, r18
+ 41c:	88 b9       	out	0x08, r24	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 41e:	85 e0       	ldi	r24, 0x05	; 5
+ 420:	8a 95       	dec	r24
+ 422:	f1 f7       	brne	.-4      	; 0x420 <__EEPROM_REGION_LENGTH__+0x20>
+ 424:	00 00       	nop
+			turn_off_leds();
+			PORTD &= ~(1 << SHIFT_EN);
+			// Seven-segment display mode
+			// Display each digit multiple times for smoother appearance
+			for (int repeat = 0; repeat < 20; repeat++) {
+				for (int i = 0; i < 4; i++) {
+ 426:	8f ef       	ldi	r24, 0xFF	; 255
+ 428:	e8 1a       	sub	r14, r24
+ 42a:	f8 0a       	sbc	r15, r24
+ 42c:	02 c0       	rjmp	.+4      	; 0x432 <__EEPROM_REGION_LENGTH__+0x32>
+ 42e:	e1 2c       	mov	r14, r1
+ 430:	f1 2c       	mov	r15, r1
+ 432:	84 e0       	ldi	r24, 0x04	; 4
+ 434:	e8 16       	cp	r14, r24
+ 436:	f1 04       	cpc	r15, r1
+ 438:	b4 f2       	brlt	.-84     	; 0x3e6 <main+0xb8>
+		if (display_mode == 0) {
+			turn_off_leds();
+			PORTD &= ~(1 << SHIFT_EN);
+			// Seven-segment display mode
+			// Display each digit multiple times for smoother appearance
+			for (int repeat = 0; repeat < 20; repeat++) {
+ 43a:	0f 5f       	subi	r16, 0xFF	; 255
+ 43c:	1f 4f       	sbci	r17, 0xFF	; 255
+ 43e:	04 31       	cpi	r16, 0x14	; 20
+ 440:	11 05       	cpc	r17, r1
+ 442:	ac f3       	brlt	.-22     	; 0x42e <__EEPROM_REGION_LENGTH__+0x2e>
+ 444:	05 c0       	rjmp	.+10     	; 0x450 <__EEPROM_REGION_LENGTH__+0x50>
+					_delay_us(1);  // Adjust this delay as needed for smooth display
+				}
+			}
+			} else {
+			// LED_Indicator mode
+			PORTD |= (1 << SHIFT_EN);
+ 446:	8b b1       	in	r24, 0x0b	; 11
+ 448:	80 68       	ori	r24, 0x80	; 128
+ 44a:	8b b9       	out	0x0b, r24	; 11
+			LED_Indicator();
+ 44c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <LED_Indicator>
+		}
+		
+		if (!led_off && temperature > 40) {
+ 450:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <led_off>
+ 454:	81 11       	cpse	r24, r1
+ 456:	0a c0       	rjmp	.+20     	; 0x46c <__EEPROM_REGION_LENGTH__+0x6c>
+ 458:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <temperature>
+ 45c:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <temperature+0x1>
+ 460:	89 97       	sbiw	r24, 0x29	; 41
+ 462:	24 f0       	brlt	.+8      	; 0x46c <__EEPROM_REGION_LENGTH__+0x6c>
+			PORTB |= (1 << ALARM_LED);  // Turn on LED
+ 464:	85 b1       	in	r24, 0x05	; 5
+ 466:	80 62       	ori	r24, 0x20	; 32
+ 468:	85 b9       	out	0x05, r24	; 5
+ 46a:	7c cf       	rjmp	.-264    	; 0x364 <main+0x36>
+			} else {
+			PORTB &= ~(1 << ALARM_LED);  // Turn off LED
+ 46c:	85 b1       	in	r24, 0x05	; 5
+ 46e:	8f 7d       	andi	r24, 0xDF	; 223
+ 470:	85 b9       	out	0x05, r24	; 5
+ 472:	78 cf       	rjmp	.-272    	; 0x364 <main+0x36>
+
+00000474 <__divmodhi4>:
+ 474:	97 fb       	bst	r25, 7
+ 476:	07 2e       	mov	r0, r23
+ 478:	16 f4       	brtc	.+4      	; 0x47e <__divmodhi4+0xa>
+ 47a:	00 94       	com	r0
+ 47c:	07 d0       	rcall	.+14     	; 0x48c <__divmodhi4_neg1>
+ 47e:	77 fd       	sbrc	r23, 7
+ 480:	09 d0       	rcall	.+18     	; 0x494 <__divmodhi4_neg2>
+ 482:	0e 94 4e 02 	call	0x49c	; 0x49c <__udivmodhi4>
+ 486:	07 fc       	sbrc	r0, 7
+ 488:	05 d0       	rcall	.+10     	; 0x494 <__divmodhi4_neg2>
+ 48a:	3e f4       	brtc	.+14     	; 0x49a <__divmodhi4_exit>
+
+0000048c <__divmodhi4_neg1>:
+ 48c:	90 95       	com	r25
+ 48e:	81 95       	neg	r24
+ 490:	9f 4f       	sbci	r25, 0xFF	; 255
+ 492:	08 95       	ret
+
+00000494 <__divmodhi4_neg2>:
+ 494:	70 95       	com	r23
+ 496:	61 95       	neg	r22
+ 498:	7f 4f       	sbci	r23, 0xFF	; 255
+
+0000049a <__divmodhi4_exit>:
+ 49a:	08 95       	ret
+
+0000049c <__udivmodhi4>:
+ 49c:	aa 1b       	sub	r26, r26
+ 49e:	bb 1b       	sub	r27, r27
+ 4a0:	51 e1       	ldi	r21, 0x11	; 17
+ 4a2:	07 c0       	rjmp	.+14     	; 0x4b2 <__udivmodhi4_ep>
+
+000004a4 <__udivmodhi4_loop>:
+ 4a4:	aa 1f       	adc	r26, r26
+ 4a6:	bb 1f       	adc	r27, r27
+ 4a8:	a6 17       	cp	r26, r22
+ 4aa:	b7 07       	cpc	r27, r23
+ 4ac:	10 f0       	brcs	.+4      	; 0x4b2 <__udivmodhi4_ep>
+ 4ae:	a6 1b       	sub	r26, r22
+ 4b0:	b7 0b       	sbc	r27, r23
+
+000004b2 <__udivmodhi4_ep>:
+ 4b2:	88 1f       	adc	r24, r24
+ 4b4:	99 1f       	adc	r25, r25
+ 4b6:	5a 95       	dec	r21
+ 4b8:	a9 f7       	brne	.-22     	; 0x4a4 <__udivmodhi4_loop>
+ 4ba:	80 95       	com	r24
+ 4bc:	90 95       	com	r25
+ 4be:	bc 01       	movw	r22, r24
+ 4c0:	cd 01       	movw	r24, r26
+ 4c2:	08 95       	ret
+
+000004c4 <_exit>:
+ 4c4:	f8 94       	cli
+
+000004c6 <__stop_program>:
+ 4c6:	ff cf       	rjmp	.-2      	; 0x4c6 <__stop_program>
